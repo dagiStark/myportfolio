@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dagim G.</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/03866bb966.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- header -->
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="assets/static/logo.png" alt="logo" class="logo" />
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-text">
+          <p>Full Stack Web and Mobile App Developer</p>
+          <h1>
+            Hi, I'm <span>Dagim Gelaneh</span> <br />
+            From Ethiopia
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+
+    <div class="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="assets/static/user.png" alt="about-img" />
+          </div>
+          <div class="about-col-2">
+            <h1 class="sub-title">About Me</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
+              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
+              sit amet consectetur adipisicing elit. Ullam in eveniet eum.
+              Numquam cupiditate d istinctio earum quasi rerum tempore, labore,
+              voluptates sint illum reiciendis saepe.
+            </p>
+
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="openTab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="openTab('experience')">
+                Experience
+              </p>
+              <p class="tab-links" onclick="openTab('education')">Education</p>
+            </div>
+
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>UI/UX</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>web dev</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>App dev</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>Automation</span> <br />
+                  Designing web interfaces
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <span>Experience</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>web dev</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>App dev</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>Automation</span> <br />
+                  Designing web interfaces
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-contents" id="education">
+              <ul>
+                <li>
+                  <span>Education</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>web dev</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>App dev</span> <br />
+                  Designing web interfaces
+                </li>
+                <li>
+                  <span>Automation</span> <br />
+                  Designing web interfaces
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+
+    <div id="services">
+      <div class="container">
+        <h1 class="sub-title">Services</h1>
+        <div class="services-list">
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Web Development</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
+              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-crop-simple"></i>
+            <h2>Web Development</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
+              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div>
+            <i class="fa-brands fa-app-store"></i>
+            <h2>Web Development</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
+              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var tabLinks = document.querySelectorAll(".tab-links");
+      var tabContents = document.querySelectorAll(".tab-contents");
+
+      function openTab(tabName) {
+        for (tabLink of tabLinks) {
+          tabLink.classList.remove("active-link");
+        }
+        for (tabContent of tabContents) {
+          tabContent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabName).classList.add("active-tab");
+      }
+    </script>
+  </body>
+</html>
