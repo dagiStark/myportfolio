@@ -10,6 +10,23 @@
       src="https://kit.fontawesome.com/03866bb966.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <style>
+      #map {
+        height: 500px; /* Set map height */
+        width: 100%; /* Set map width */
+      }
+    </style>
   </head>
   <body>
     <!-- header -->
@@ -24,14 +41,12 @@
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
+          <i class="fa-solid fa-bars" id="menu"></i>
         </nav>
 
         <div class="header-text">
           <p>Full Stack Web and Mobile App Developer</p>
-          <h1>
-            Hi, I'm <span>Dagim Gelaneh</span> <br />
-            From Ethiopia
-          </h1>
+          <h1>Hi, I'm <span>Dagim Gelaneh</span> From Ethiopia</h1>
         </div>
       </div>
     </div>
@@ -42,93 +57,38 @@
       <div class="container">
         <div class="row">
           <div class="about-col-1">
-            <img src="assets/static/user.png" alt="about-img" />
+            <img src="assets/static/user.png" alt="about-img" loading="lazy" />
           </div>
           <div class="about-col-2">
-            <h1 class="sub-title">About Me</h1>
+            <h1 class="sub-title">About Me_</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
-              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Ullam in eveniet eum.
-              Numquam cupiditate d istinctio earum quasi rerum tempore, labore,
-              voluptates sint illum reiciendis saepe.
+              Hi, I&apos;m Dagim Gelaneh, a dedicated full-stack web and mobile
+              app developer who enjoys creating innovative solutions. I have
+              experience in API development and testing, along with responsive
+              frontend development. I love taking on challenging projects and
+              working with great teams, focusing on delivering quality and
+              scalable results.
             </p>
-
-            <div class="tab-titles">
-              <p class="tab-links active-link" onclick="openTab('skills')">
-                Skills
-              </p>
-              <p class="tab-links" onclick="openTab('experience')">
-                Experience
-              </p>
-              <p class="tab-links" onclick="openTab('education')">Education</p>
-            </div>
-
-            <div class="tab-contents active-tab" id="skills">
-              <ul>
-                <li>
-                  <span>UI/UX</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>web dev</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>App dev</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>Automation</span> <br />
-                  Designing web interfaces
-                </li>
-              </ul>
-            </div>
-
-            <div class="tab-contents" id="experience">
-              <ul>
-                <li>
-                  <span>Experience</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>web dev</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>App dev</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>Automation</span> <br />
-                  Designing web interfaces
-                </li>
-              </ul>
-            </div>
-
-            <div class="tab-contents" id="education">
-              <ul>
-                <li>
-                  <span>Education</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>web dev</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>App dev</span> <br />
-                  Designing web interfaces
-                </li>
-                <li>
-                  <span>Automation</span> <br />
-                  Designing web interfaces
-                </li>
-              </ul>
+            <p>
+              I have experience working on algorithms and developing backend
+              applications, where I&apos;ve honed my skills in optimizing
+              performance and ensuring efficient data processing. My work has
+              involved building robust server-side solutions that support
+              various functionalities and enhance the overall user experience.
+            </p>
+            <div>
+              <button>Download CV</button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div id="skills">
+      <div class="container">
+        <h1>Skills_</h1>
+        <div class="skills-list"></div>
       </div>
     </div>
 
@@ -136,99 +96,91 @@
 
     <div id="services">
       <div class="container">
-        <h1 class="sub-title">Services</h1>
+        <h1>Services_</h1>
         <div class="services-list">
           <div>
             <i class="fa-solid fa-code"></i>
-            <h2>Web Development</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
-              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
-            </p>
-            <a href="#">Learn More</a>
+            <h2>Frontend Development</h2>
+            <p>Develop responsive and pixel perfect web applications</p>
           </div>
           <div>
             <i class="fa-solid fa-crop-simple"></i>
-            <h2>Web Development</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
-              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
-            </p>
-            <a href="#">Learn More</a>
+            <h2>Backend Development</h2>
+            <p>Develop scalable and reliable backend applications</p>
           </div>
           <div>
             <i class="fa-brands fa-app-store"></i>
-            <h2>Web Development</h2>
+            <h2>API Testing</h2>
+            <p>Test APIs and ensure they are working as expected</p>
+          </div>
+          <div>
+            <i class="fa-brands fa-app-store"></i>
+            <h2>Deployment</h2>
+            <p>Deployment with CI/CD to Cloud Platforms</p>
+          </div>
+          <div>
+            <i class="fa-brands fa-app-store"></i>
+            <h2>Consulting</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-              modi vero quisquam cumque ipsa porro repudiandae illum odio, a
-              maiores vitae officiis rem, saepe blanditiis. Lorem ipsum dolor
+              Consulting on Applications Development and Deployment Process for
+              scaling the Infrastructures
             </p>
-            <a href="#">Learn More</a>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Education -->
+    <!-- <div id="education">
+      <div class="container">
+        <h1>Education_</h1>
+        <div class="education-list">
+          <div>
+            <h1>Bachelor of Science in Computer Engineering</h1>
+            <h3>AAiT Addis Ababa, Ethiopia</h3>
+          </div>
+
+          <div>
+            <h1>Full Stack Developer and Project Manager Intern</h1>
+            <h3>MinT Addis Ababa, Ethiopia</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
     <!-- Portfolio -->
 
     <div id="portfolio">
       <div class="container">
-        <h1 class="sub-title">My Work</h1>
-        <div class="work-list">
-          <div class="work">
-            <img src="assets/static/work-1.png" alt="work-img" />
-            <div class="layer">
-              <h3>Social Media App</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
-                ipsa.
-              </p>
-              <a href="#"
-                ><i class="fa-solid fa-arrow-up-right-from-square"></i
-              ></a>
-            </div>
-          </div>
-          <div class="work">
-            <img src="assets/static/work-2.png" alt="work-img" />
-            <div class="layer">
-              <h3>Social Media App</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
-                ipsa.
-              </p>
-              <a href="#"
-                ><i class="fa-solid fa-arrow-up-right-from-square"></i
-              ></a>
-            </div>
-          </div>
-          <div class="work">
-            <img src="assets/static/work-3.png" alt="work-img" />
-            <div class="layer">
-              <h3>Social Media App</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse,
-                ipsa.
-              </p>
-              <a href="#"
-                ><i class="fa-solid fa-arrow-up-right-from-square"></i
-              ></a>
-            </div>
-          </div>
-        </div>
+        <h1>My Work_</h1>
+        <div class="work-list"></div>
 
         <a href="#" class="btn">View More</a>
+      </div>
+    </div>
+
+    <!-- Other projects -->
+
+    <div id="projects">
+      <div class="container">
+        <h1>Recent Projects_</h1>
+        <div class="recent-projects work-list"></div>
       </div>
     </div>
 
     <!-- Contact  -->
     <div id="contact">
       <div class="container">
+        <h1>Contact Me_</h1>
+        <div id="map"></div>
+
+        <p id="contact-text">Tell me about your project story and project brief</p>
         <div class="row">
           <div class="contact-left">
-            <h1 class="sub-title">Contact Me</h1>
+            <p>Addis Ababa, Ethiopia</p>
             <p>contact@expample.com</p>
             <p>+234 123 456 789</p>
             <div class="social-icons">
@@ -240,40 +192,41 @@
           </div>
           <div class="contact-right">
             <form action="">
-              <input type="text" name="Name" placeholder="Your Name" required />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-              />
-              <textarea
-                name="Message"
-                id=""
-                rows="6"
-                placeholder="Your Message"
-              ></textarea>
-              <button type="submit" class="btn btn2">Submit</button>
+              <div>
+                <input
+                  type="text"
+                  name="Name"
+                  placeholder="Your Name"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                />
+                <input type="text" name="subject" placeholder="Subject" />
+              </div>
+              <div>
+                <textarea
+                  name="Message"
+                  id=""
+                  rows="6"
+                  placeholder="Your Message"
+                ></textarea>
+                <button type="submit" class="btn btn2">Send Message</button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
 
-    <script>
-      var tabLinks = document.querySelectorAll(".tab-links");
-      var tabContents = document.querySelectorAll(".tab-contents");
+    <p>
+      Copyright © 2023 All rights reserved, Developed By
+      <span>Dagim Gelaneh</span>
+    </p>
 
-      function openTab(tabName) {
-        for (tabLink of tabLinks) {
-          tabLink.classList.remove("active-link");
-        }
-        for (tabContent of tabContents) {
-          tabContent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabName).classList.add("active-tab");
-      }
-    </script>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>
