@@ -3,7 +3,7 @@ export const skills = [
   {
     id: 1,
     title: "Next js",
-    icon: "./assets/static/next.svg",
+    icon: "./assets/static/nextjs-icon.svg",
   },
   {
     id: 2,

@@ -1,15 +1,19 @@
 :root {
   --background-color: #ffffff;
   --text-color: #000000;
-  --button-bg: #ffffff;
-  --button-text: #000000;
+  --button-bg: linear-gradient(90deg, #4d56de, #8c4dde);
+  --button-text: #ffffff;
   --link-color: #fff;
-  --highlight-color: #ff004f;
+  --highlight-color: #4d56de;
   --services-bg: #262626;
-  --nav-bg: #ff004f;
+  --nav-bg: #ffffff;
+  --about-txt: #585555;
+  --skills-bg: #c7c5c550;
+  --services-hover: #323dd477;
+  --services-card-bg: #d4d4d4;
+  --layer-hover: linear-gradient(rgba(0, 0, 0, 0.6), #323dd4);
+  --layer-text: #ffffff;
 }
-
-
 
 * {
   margin: 0;
@@ -18,16 +22,24 @@
   box-sizing: border-box;
 }
 
-
-
 body.dark-mode {
   --background-color: #080808;
   --text-color: #ffffff;
-  --button-bg: #080808;
+  --button-bg: linear-gradient(90deg, #4d56de, #8c4dde);
   --button-text: #ffffff;
   --link-color: #ababab;
   --services-bg: #121212;
-  --nav-bg: #fff;
+  --nav-bg: #323030;
+  --about-txt: #807b7b;
+  --skills-bg: #c7c5c550;
+  --services-hover: #323dd477;
+  --services-card-bg: #323030;
+  --layer-hover: linear-gradient(rgba(0, 0, 0, 0.6), #323dd4);
+  --layer-text: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -35,9 +47,8 @@ body {
   color: var(--text-color);
 }
 
-
 button {
-  background-color: var(--button-bg);
+  background: var(--button-bg);
   color: var(--button-text);
   border: none;
   padding: 10px 20px;
@@ -50,9 +61,9 @@ button {
 #header {
   width: 100%;
   height: 100vh;
-  background: url(assets/static/background.png) fixed;
-  background-size: cover;
-  background-position: center;
+  background: url(assets/static/user2.png) no-repeat fixed;
+  background-size: 80%; /* Adjust percentage as needed */
+  background-position: left center; /* Aligns image at the bottom center */
 }
 
 .container {
@@ -61,10 +72,14 @@ button {
 
 h1 {
   font-size: 40px;
+  color: var(--text-color);
+  text-transform: capitalize;
 }
 
 nav {
-  padding: 25px;
+  padding-left: 7%;
+  padding-right: 15%;
+  padding-top: 10px;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -74,9 +89,10 @@ nav {
   left: 0; /* Aligns it to the left of the viewport */
   width: 100%; /* Ensures it spans the full width */
   z-index: 1000; /* Keeps it above other content */
-  background-color: var(--nav-bg); /* Optional: Ensures the background matches your design */
+  background-color: var(
+    --nav-bg
+  ); /* Optional: Ensures the background matches your design */
 }
-
 
 nav ul {
   display: none;
@@ -94,7 +110,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--text-color);
   font-size: 18px;
   position: relative; /* Make the <a> the positioning context for ::after */
 }
@@ -103,7 +119,7 @@ nav ul li a::after {
   content: "";
   width: 0; /* Start with no width */
   height: 3px;
-  background: #ff004f;
+  background: #4d56de;
   position: absolute;
   left: 0;
   bottom: -6px;
@@ -119,19 +135,21 @@ nav ul li a:hover::after {
 }
 
 .header-text {
-  margin-top: 20%;
+  margin-top: 40%;
   font-size: 20px;
   width: 100%;
   flex-wrap: wrap;
+  text-transform: uppercase;
 }
 
 .header-text h1 {
   font-size: 35px;
   margin-top: 20px;
+  text-transform: uppercase;
 }
 
 .header-text h1 span {
-  color: #ff004f;
+  color: #4d56de;
 }
 
 .header-text h1 span.dark-mode {
@@ -140,9 +158,9 @@ nav ul li a:hover::after {
 
 /* about */
 
-.about {
+#about {
   padding: 80px 0;
-  color: #ababab;
+  color: var(--about-txt);
 }
 
 .row {
@@ -171,6 +189,7 @@ nav ul li a:hover::after {
 .about-col-1 img {
   width: 100%;
   border-radius: 15px;
+  transform: scale(1.2);
 }
 
 .about-col-2 {
@@ -180,20 +199,21 @@ nav ul li a:hover::after {
   justify-content: space-between;
 }
 
-.about-col-2 p {
-  font-size: 20px;
-  line-height: 25px;
+.about-col-2 div {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.sub-title {
-  font-size: 60px;
-  font-weight: 600;
-  color: #fff;
+.about-col-2 p {
+  font-size: 15px;
+  line-height: 25px;
 }
 
 /* Skills */
 #skills {
   padding: 50px 0;
+  background-color: var(--skills-bg);
 }
 
 .skills-list {
@@ -222,6 +242,17 @@ nav ul li a:hover::after {
   margin-bottom: 20px;
 }
 
+.skill-item {
+  position: relative;
+  opacity: 0;
+  transform: translateX(-50px); /* Start from the left */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skill-item.visible {
+  opacity: 1;
+  transform: translateX(0); /* Reset to original position */
+}
 
 
 /* Services */
@@ -238,7 +269,7 @@ nav ul li a:hover::after {
 }
 
 .services-list div {
-  background: #262626;
+  background: var(--services-card-bg);
   padding: 40px;
   font-size: 13px;
   font-weight: 300;
@@ -274,7 +305,7 @@ nav ul li a:hover::after {
 }
 
 .services-list div:hover {
-  background: #ff004f;
+  background: var(--services-hover);
   transform: translateY(-10px);
 }
 
@@ -282,6 +313,7 @@ nav ul li a:hover::after {
 
 #portfolio {
   padding: 30px 0;
+  background-color: var(--skills-bg);
 }
 
 .work-list {
@@ -295,6 +327,14 @@ nav ul li a:hover::after {
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(70px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.work.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .work img {
@@ -309,7 +349,7 @@ nav ul li a:hover::after {
 .layer {
   width: 100%;
   height: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+  background: var(--layer-hover);
   border-radius: 10px;
   position: absolute;
   left: 0;
@@ -323,6 +363,7 @@ nav ul li a:hover::after {
   text-align: center;
   font-size: 14px;
   transition: height 0.5s ease;
+  color: var(--layer-text);
 }
 
 .layer h3 {
@@ -332,7 +373,7 @@ nav ul li a:hover::after {
 
 .layer a {
   margin-top: 20px;
-  color: #ff004f;
+  color: #4d56de;
   text-decoration: none;
   font-size: 18px;
   line-height: 60px;
@@ -356,7 +397,6 @@ nav ul li a:hover::after {
   text-decoration: none;
 }
 
-
 /* Contact */
 
 #contact {
@@ -368,6 +408,7 @@ nav ul li a:hover::after {
   margin-bottom: 20px;
   justify-self: center;
   text-align: center;
+  color: #807b7b;
 }
 .copyright {
   text-align: center;
@@ -377,7 +418,7 @@ nav ul li a:hover::after {
 }
 
 .copyright span {
-  color: #ff004f;
+  color: #4d56de;
 }
 
 #map {
@@ -393,13 +434,13 @@ nav ul li a:hover::after {
 }
 
 .contact-left .email:hover {
-  color: #ff004f;
+  color: #4d56de;
   transform: scale(1.0001);
   transition: all 0.3s ease; /* Adds smooth transition */
 }
 
 .contact-left p i {
-  color: #ff004f;
+  color: #4d56de;
   margin-right: 15px;
   font-size: 20px;
 }
@@ -416,7 +457,7 @@ nav ul li a:hover::after {
 }
 
 .social-icons a:hover {
-  color: #ff004f;
+  color: #4d56de;
   transform: translateY(-5px);
 }
 
@@ -445,7 +486,7 @@ form input,
 form textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ff004f;
+  border: 1px solid #4d56de;
   border-radius: 5px;
 }
 
@@ -455,7 +496,7 @@ form textarea {
 @media screen and (min-width: 600px) {
   /* Header */
   .header-text {
-    margin-top: 20%;
+    margin-top: 40%;
     font-size: 25px;
   }
 
@@ -494,6 +535,11 @@ form textarea {
 /* Large devices (lg, ≥900px) */
 @media screen and (min-width: 900px) {
   /* Header */
+
+  #header {
+    background-position: right bottom; /* Aligns image at the bottom center */
+    background-size: 40%; /* Adjust percentage as needed */
+  }
   .header-text {
     margin-top: 20%;
     font-size: 20px;
