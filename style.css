@@ -1,3 +1,16 @@
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --link-color: #fff;
+  --highlight-color: #ff004f;
+  --services-bg: #262626;
+  --nav-bg: #ff004f;
+}
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -5,9 +18,31 @@
   box-sizing: border-box;
 }
 
+
+
+body.dark-mode {
+  --background-color: #080808;
+  --text-color: #ffffff;
+  --button-bg: #080808;
+  --button-text: #ffffff;
+  --link-color: #ababab;
+  --services-bg: #121212;
+  --nav-bg: #fff;
+}
+
 body {
-  background: #080808;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* header */
@@ -15,7 +50,7 @@ body {
 #header {
   width: 100%;
   height: 100vh;
-  background: url(assets/static/background.png) fixed ;
+  background: url(assets/static/background.png) fixed;
   background-size: cover;
   background-position: center;
 }
@@ -29,11 +64,19 @@ h1 {
 }
 
 nav {
+  padding: 25px;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   display: flex;
+  position: fixed; /* Makes it fixed */
+  top: 0; /* Aligns it to the top of the viewport */
+  left: 0; /* Aligns it to the left of the viewport */
+  width: 100%; /* Ensures it spans the full width */
+  z-index: 1000; /* Keeps it above other content */
+  background-color: var(--nav-bg); /* Optional: Ensures the background matches your design */
 }
+
 
 nav ul {
   display: none;
@@ -51,7 +94,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--link-color);
   font-size: 18px;
   position: relative; /* Make the <a> the positioning context for ::after */
 }
@@ -91,6 +134,10 @@ nav ul li a:hover::after {
   color: #ff004f;
 }
 
+.header-text h1 span.dark-mode {
+  color: #d6f948;
+}
+
 /* about */
 
 .about {
@@ -103,6 +150,18 @@ nav ul li a:hover::after {
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.about-col-1,
+.about-col-2 {
+  opacity: 0;
+  transform: translateX(-100px); /* Start off-screen to the left */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.scroll-in {
+  opacity: 1;
+  transform: translateX(0); /* Reset to original position */
 }
 
 .about-col-1 {
@@ -121,7 +180,7 @@ nav ul li a:hover::after {
   justify-content: space-between;
 }
 
-.about-col-2 p{
+.about-col-2 p {
   font-size: 20px;
   line-height: 25px;
 }
@@ -132,39 +191,37 @@ nav ul li a:hover::after {
   color: #fff;
 }
 
-
-
 /* Skills */
 #skills {
   padding: 50px 0;
 }
-
 
 .skills-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30%;
-  margin-top: 50px
+  margin-top: 50px;
 }
 
-.skills-list img{
+.skills-list img {
   width: 35px;
   height: 35px;
 }
 
-.skills-list ul{
+.skills-list ul {
   display: flex;
   flex-direction: column;
 }
 
-.skills-list ul li{
+.skills-list ul li {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-right: 20px;
   margin-bottom: 20px;
 }
+
 
 
 /* Services */
@@ -187,6 +244,14 @@ nav ul li a:hover::after {
   font-weight: 300;
   border-right: 10px solid #000; /* Added border style and color */
   transition: transform 0.3s, background 0.3s ease; /* Smooth transition for hover effects */
+  opacity: 0; /* Hide the element initially */
+  transform: translateX(-100px); /* Start from the left */
+}
+
+.services-list div.scroll-in {
+  opacity: 1; /* Make it visible */
+  transform: translateX(0); /* Reset to original position */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
 }
 
 .services-list div i {
@@ -225,7 +290,6 @@ nav ul li a:hover::after {
   grid-gap: 40px;
   margin-top: 50px;
 }
-
 
 .work {
   border-radius: 10px;
@@ -288,19 +352,10 @@ nav ul li a:hover::after {
 
 .btn {
   display: block;
-  margin: 50px auto;
   width: fit-content;
-  border: 1px solid #ff004f;
-  padding: 14px 50px;
-  border-radius: 6px;
   text-decoration: none;
-  color: #fff;
-  transition: background 0.5s ease;
 }
 
-.btn:hover {
-  background: #ff004f;
-}
 
 /* Contact */
 
@@ -308,31 +363,45 @@ nav ul li a:hover::after {
   padding: 30px 0;
 }
 
-
-.contact-text{
-  align-self: center;
+#contact-text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-self: center;
+  text-align: center;
+}
+.copyright {
+  text-align: center;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
-#map{
+.copyright span {
+  color: #ff004f;
+}
+
+#map {
   margin-top: 40px;
 }
 
 .contact-left {
-  flex-basis: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.contact-right {
-  flex-basis: 60%;
-}
-
-.contact-left p {
-  margin-top: 30px;
+.contact-left .email:hover {
+  color: #ff004f;
+  transform: scale(1.0001);
+  transition: all 0.3s ease; /* Adds smooth transition */
 }
 
 .contact-left p i {
   color: #ff004f;
   margin-right: 15px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .social-icons {
@@ -353,11 +422,23 @@ nav ul li a:hover::after {
 
 .btn.btn2 {
   display: inline-block;
-  background: #ff004f;
+  width: 100%;
+}
+
+.contact-right {
+  flex-basis: 60%;
 }
 
 .contact-right form {
   width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+form input {
+  margin-bottom: 15px;
+  height: 45px;
 }
 
 form input,
@@ -366,7 +447,6 @@ form textarea {
   padding: 10px;
   border: 1px solid #ff004f;
   border-radius: 5px;
-  margin-bottom: 20px;
 }
 
 /* Responsive Design */
@@ -395,23 +475,20 @@ form textarea {
     display: flex;
   }
 
-  
   /* about */
 
   .row {
     flex-direction: row;
   }
 
-
-  .about-col-2 p{
+  .about-col-2 p {
     font-size: 13px;
     line-height: 20px;
   }
-  
+
   .sub-title {
     font-size: 40px;
   }
-  
 }
 
 /* Large devices (lg, ≥900px) */
@@ -421,7 +498,6 @@ form textarea {
     margin-top: 20%;
     font-size: 20px;
     width: 75%;
-
   }
 
   .header-text h1 {
@@ -440,17 +516,21 @@ form textarea {
     display: flex;
   }
 
-  
   /* about */
-  .about-col-2 p{
+  .about-col-2 p {
     font-size: 15px;
     line-height: 20px;
   }
-  
+
   .sub-title {
     font-size: 50px;
   }
-  
+
+  /* Contact */
+
+  .contact-right form {
+    flex-direction: row;
+  }
 }
 
 /* Large devices (lg, ≥1200px) */
@@ -479,15 +559,12 @@ form textarea {
   }
 
   /* about */
-  .about-col-2 p{
+  .about-col-2 p {
     font-size: 20px;
     line-height: 25px;
   }
-  
+
   .sub-title {
     font-size: 60px;
   }
-  
-
-
 }

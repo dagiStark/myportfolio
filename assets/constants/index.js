@@ -165,3 +165,27 @@ export const projects = [
     technologies: ["Node Js", "Refine", "MongoDB", "Material UI", "AuthO"],
   },
 ];
+
+
+export const socialMedia = [
+  {
+    id: 1,
+    img: "/icons8-github.svg",
+    link: "https://github.com/dagiStark",
+  },
+  {
+    id: 2,
+    img: "/icons8-telegram.svg",
+    link: "",
+  },
+  {
+    id: 3,
+    img: "/icons8-linkedin.svg",
+    link: "",
+  },
+  {
+    id: 4,
+    img: "",
+    link: "Next js",
+  },
+];
